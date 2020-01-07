@@ -4,6 +4,8 @@ phases:
   build:
     commands:
       - echo "Test"
+      - dotnet publish MoonCarTest/MoonCarTest.csproj -c Release -o MoonCarTestOutput
+      - cd MoonCarTestOutput && dotnet vstest MoonCarTest.dll
   post_build:
     commands:
       - echo "Build"
