@@ -10,4 +10,4 @@ phases:
       - dotnet publish MoonCar/MoonCar.csproj -c Release -o output
 artifacts:
   files:
-    - 'target/output'
+    - 'output'
