@@ -8,6 +8,7 @@ phases:
     commands:
       - if [ $CODEBUILD_BUILD_SUCCEEDING = 1 ]; then echo "Build PASS"; else echo "Build FAIL"; exit 1; fi
       - dotnet publish MoonCar/MoonCar.csproj -c Release -o output
+      - ls
 artifacts:
   files:
     - '/output'
