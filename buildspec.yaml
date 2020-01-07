@@ -4,8 +4,6 @@ phases:
   build:
     commands:
       - echo "BUILDING"
-      - yum update 
-      - yum install dotnet-sdk-2.2
   post_build:
     commands:
       - if [ $CODEBUILD_BUILD_SUCCEEDING = 1 ]; then echo "Build PASS"; else echo "Build FAIL"; exit 1; fi
