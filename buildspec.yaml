@@ -4,7 +4,6 @@ phases:
   build:
     commands:
       - echo "Test"
-      - dotnet test
   post_build:
     commands:
       - echo "Build"
