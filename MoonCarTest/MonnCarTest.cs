@@ -130,11 +130,5 @@ namespace MoonCarTest
 
             Assert.AreEqual(desirePosition, resultPosition);
         }
-
-        [Test]
-        public void Test_Case6()
-        {
-            Assert.Fail("dummy test, it should failed");
-        }
     }
 }
