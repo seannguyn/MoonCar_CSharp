@@ -6,11 +6,18 @@ phases:
       - echo "Test"
       - dotnet publish MoonCarTest/MoonCarTest.csproj -c Release -o MoonCarTestOutput
       - dotnet vstest MoonCarTestOutput/MoonCarTest.dll
+      - echo "login to Docker"
+      - $(aws ecr get-login --no-include-email --region us-east-1)
   post_build:
     commands:
       - echo "Build"
       - if [ $CODEBUILD_BUILD_SUCCEEDING = 1 ]; then echo "Build PASS"; else echo "Build FAIL"; exit 1; fi
       - dotnet publish MoonCar/MoonCar.csproj -c Release -o output
+      - echo "build docker image"
+      - docker build -t mooncar ./MoonCar
+      - echo "push docker image"
+      - docker tag mooncar $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:latest
 artifacts:
   files:
     - 'output/*'
